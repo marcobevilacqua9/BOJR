@@ -84,7 +84,11 @@ class CommonsArchiver implements Archiver {
         ArchiveEntry entry;
         while ((entry = input.getNextEntry()) != null) {
             File file = new File(destination, entry.getName());
-            
+            File parent = new File(file.getParent());
+            if(!parent.exists()){
+                parent.mkdirs();
+            }
+
             extractingReport.addToFileNameList(entry.getName());
 
             if (!entry.isDirectory()) {
