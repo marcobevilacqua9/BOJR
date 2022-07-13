@@ -104,8 +104,6 @@ public final class IOUtils {
             throw new IllegalArgumentException(destination + " exists and is a file, directory or path expected.");
         } else if (!destination.exists()) {
             destination.mkdirs();
-        } else if (!destination.canWrite()){
-            throw new IllegalArgumentException(destination + " is not writeable.");
         }
     }
 
